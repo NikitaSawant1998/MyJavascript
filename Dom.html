@@ -1,0 +1,58 @@
+<!--DOM Manipulation – Modify HTML elements dynamically.
+/*
+DOM (Document Object Model) is a tree-like structure representing the HTML elements of a web page.
+ It allows JavaScript to interact with and manipulate the content, structure, and style of the page.
+Think of it as a live map of your HTML, where every element (like <p>, <div>, etc.) 
+becomes a node you can control with JavaScript.
+-->
+
+<html>
+<head>
+    <title>Simple DOM Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        input, button {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        #output {
+            font-weight: bold;
+            color: green;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Welcome!</h2>
+
+    <label for="nameInput">Enter your name:</label><br>
+    <input type="text" id="nameInput" placeholder="Your name" /><br>
+    <button onclick="greet()">Greet Me</button>
+
+    <p id="output"></p>
+
+    <script>
+        function greet() {
+            // Get the value from input
+            let name = document.getElementById("nameInput").value;
+
+            // Get the paragraph element to display message
+            let output = document.getElementById("output");
+
+            // Check if name is empty
+            if (name.trim() === "") {
+                output.textContent = "Please enter your name!";
+                output.style.color = "red";
+            } else {
+                output.textContent = "Hello, " + name + "! 👋";
+                output.style.color = "green";
+            }
+        }
+    </script>
+
+</body>
+</html>

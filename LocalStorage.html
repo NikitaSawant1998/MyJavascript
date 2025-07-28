@@ -1,0 +1,49 @@
+<!--
+| Use Case                   | Storage Type     |
+| -------------------------- | ---------------- |
+| Remember user preferences  | `localStorage`   |
+| Temporary login session    | `sessionStorage` |
+| Form auto-fill across tabs | `localStorage`   |
+| One-tab shopping cart      | `sessionStorage` |
+----------------------------------------------------------
+⚠️ Notes:
+Only strings can be stored directly.
+
+For objects/arrays, use JSON.stringify() and JSON.parse().
+
+javascript
+Copy
+Edit
+// Storing object
+localStorage.setItem("user", JSON.stringify({ name: "Nikita", age: 25 }));
+
+// Retrieving object
+let user = JSON.parse(localStorage.getItem("user"));
+console.log(user.name); // "Nikita"
+sessionStorage is a Web API, and it only works in the browser environment, not in Node.js or non-browser environments.
+-->
+<html>
+    <head></head>
+    <body>
+<input type="text" id="username" placeholder="Enter name" />
+<button onclick="saveName()">Save</button>
+<button onclick="loadName()">Load</button>
+<p id="output"></p>
+<script>
+    function saveName() {
+    let name = document.getElementById("username").value;
+    localStorage.setItem("name", name);
+    alert("Name saved in localStorage!");
+}
+
+function loadName() {
+    let name = localStorage.getItem("name");
+    document.getElementById("output").textContent = name
+        ? `Welcome back, ${name}!`
+        : "No name found.";
+}
+
+</script>
+
+    </body>
+</html>
